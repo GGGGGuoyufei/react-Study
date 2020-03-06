@@ -4,17 +4,25 @@ import List from './components/list/List'
 
 export default class App extends Component {
     state = {
-        keyWord:''
+        welcome:true,
+        loading:false,
+        users:[],
+        err:''
     }
-    updateAppState=(keyWord)=>{
-        this.setState({keyWord})
+    updateAppState=({welcome,loading,users,err})=>{
+        this.setState({
+            welcome,
+            loading,
+            users,
+            err
+        })
     }
     render() {
         return (
             <div>
                 <div className="container">
                     <Search updateAppState={this.updateAppState}/>
-                    <List keyWord={this.state.keyWord}/>
+                    <List appState={this.state}/>
                 </div>
             </div>
         )
